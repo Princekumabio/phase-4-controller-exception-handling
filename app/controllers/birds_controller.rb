@@ -18,30 +18,19 @@ class BirdsController < ApplicationController
   def show
     bird = find_bird
     render json: bird
-    rescue ActiveRecord::RecordNotFound
-    render_not_found_response
-    end
   end
 
   # PATCH /birds/:id
   def update
    bird = find_bird
    bird.update(bird_params)
-  render json: bird
-   rescue ActiveRecord::RecordNotFound
-  ender_not_found_response
-    end
   end
 
   # PATCH /birds/:id/like
   def increment_likes
    bird = find_bird
-    if bird
-      bird.update(likes: bird.likes + 1)
-      render json: bird
-    else
-      render_not_found_response
-    end
+   bird.update(likes: bird.likes + 1)
+   render json: bird
   end
 
   # DELETE /birds/:id
